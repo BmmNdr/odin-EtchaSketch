@@ -1,0 +1,4 @@
+#grid {
+    border: solid 4px black;
+    display: inline-grid;
+}
