@@ -11,8 +11,20 @@
 
 <body>
     <div id="grid"></div>
-    <div>
-        <input type="range" min="2" max="64" value="16" id="slider">
+
+    <div class="input">
+
+        <div class="input">
+            <label for="slider">Chose a dimension</label>
+            <input type="range" min="2" max="64" value="16" id="slider">
+            <label for="slider" id="slider-dim">16 x 16</label>
+        </div>
+        
+        <div class="input">
+            <label for="color-picker">Chose a color</label>
+            <input type="color" id="color-picker">
+        </div>
+        
     </div>
     
 </body>

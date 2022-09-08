@@ -1,20 +1,22 @@
 const GRID = document.getElementById('grid');
 const SLIDER = document.getElementById('slider');
+const SLIDER_DIM = document.getElementById('slider-dim');
+const COLOR_PICKER = document.getElementById('color-picker')
 
 const GRID_MAX = 600; //grid's dimension in px
 
 var gridDim = SLIDER.value; //number of squares in the grid
 var squareDim = GRID_MAX/gridDim; //dimension of squares' side
 var mouseDown = false;
+var color = COLOR_PICKER.value;
 
 document.body.onmousedown  = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
-
 SLIDER.addEventListener('input', newGrid);
+COLOR_PICKER.addEventListener('input', () => {color = COLOR_PICKER.value});
 
 createGrid();
-
 function createGrid()
 {
     GRID.setAttribute('style', 'grid-template-columns: repeat('+gridDim+', 1fr); grid-template-rows: repeat('+gridDim+', 1fr)');
@@ -37,6 +39,8 @@ function newGrid() {
     gridDim = SLIDER.value;
     squareDim = GRID_MAX/gridDim;
 
+    SLIDER_DIM.innerHTML = ''+SLIDER.value+' x '+SLIDER.value+'';
+
     removeGrid();
     createGrid();
 }
@@ -48,6 +52,8 @@ function removeGrid() {
 }
 
 function changeColor(e) {
-    if(mouseDown)
-        e.target.style.backgroundColor = 'black';
+    if(!mouseDown && e.type == 'mouseover') 
+        return
+
+    e.target.style.backgroundColor = color;
 }
