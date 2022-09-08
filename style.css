@@ -18,7 +18,10 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-content: space-between;
+    gap: 50px;
+
     background-color: rgb(42, 190, 171);
+
 
     height: max-content;
     width: max-content;
